@@ -1,0 +1,437 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="科學實證頁面 - 強化數據支持">
+  <title>科學實證頁面 - 環境品質標準政策</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .evidence-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-lg);
+    }
+    
+    .evidence-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-xl);
+      box-shadow: var(--shadow-md);
+      border: 2px solid var(--color-gray-200);
+      transition: all var(--transition-fast);
+      text-align: center;
+    }
+    
+    .evidence-card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: var(--spacing-sm);
+      color: var(--color-primary);
+    }
+    
+    .evidence-card-value {
+      font-size: 3rem;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .evidence-card-desc {
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+    }
+    
+    .process-step {
+      background: var(--color-gray-50);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-lg);
+      border-left: 4px solid var(--color-secondary);
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .process-step h4 {
+      font-weight: 700;
+      color: var(--color-secondary);
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--spacing-xl);
+    }
+    
+    .benefit-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-xl);
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--color-gray-200);
+    }
+    
+    .benefit-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .guarantee-card {
+      background: var(--color-gray-50);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-xl);
+      border: 2px solid var(--color-primary);
+    }
+    
+    .guarantee-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-lg);
+    }
+    
+    .guarantee-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+      color: var(--color-primary);
+      flex-shrink: 0;
+      margin-top: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- 社交媒體固定按鈕 -->
+  <div class="social-buttons">
+    <a href="https://www.facebook.com/WetopTW" target="_blank" class="social-button facebook" title="Facebook">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+      </svg>
+    </a>
+    <a href="https://page.line.me/wetop?openQrModal=true" target="_blank" class="social-button line" title="LINE">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.070 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+      </svg>
+    </a>
+    <a href="#top" class="social-button top-button" title="回到頂部">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+      </svg>
+    </a>
+  </div>
+  
+  <!-- 導航列 -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-brand">
+        <img src="wetop-logo.png" alt="WETOP Logo" class="navbar-logo">
+        <span>環境品質標準政策</span>
+      </a>
+      
+      <button class="navbar-toggle" aria-label="選單">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <ul class="navbar-menu">
+        <li><a href="index.html">首頁</a></li>
+        <li><a href="innovation-model.html">創新模式</a></li>
+        <li><a href="application-scenarios.html">應用場景</a></li>
+        <li><a href="scientific-evidence.html">科學實證</a></li>
+        <li><a href="partners.html">合作夥伴</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <!-- 主要內容 -->
+  <main>
+    
+    <!-- Hero Section -->
+    <section class="page-header">
+      <div class="container">
+        <div class="page-category">科學實證</div>
+        <h1 class="page-title text-balance">
+          數據說話，實證為本
+        </h1>
+        <p class="page-subtitle text-pretty">
+          嚴謹的科學驗證，支撐政策推動的堅實基礎
+        </p>
+      </div>
+    </section>
+    
+    <!-- X光機譬喻 -->
+    <section class="section">
+      <div class="container">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-12">
+            <div style="font-size: 3rem; color: var(--color-primary); margin-bottom: var(--spacing-md);">🔬</div>
+            <h2 class="section-title" style="margin-bottom: var(--spacing-md);">如同 X 光機般的科學驗證</h2>
+            <p class="section-subtitle">
+              將看不見的環境威脅,轉化為可見、可量化的數據
+            </p>
+          </div>
+          
+          <div class="section-light" style="border-radius: var(--radius-xl); padding: var(--spacing-2xl); margin-bottom: var(--spacing-xl);">
+            <p class="text-lg leading-relaxed mb-6" style="color: var(--color-gray-800);">
+              就像醫院的 X 光機能夠透視人體內部,發現肉眼無法察覺的病灶，<strong style="color: var(--color-primary);">主動式環境淨化設備的科學檢測</strong>也能揭示空氣中隱藏的威脅。
+            </p>
+            <div class="evidence-card-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+              <div style="background: white; border-radius: var(--radius-md); padding: var(--spacing-lg);">
+                <h4 style="font-weight: 700; margin-bottom: var(--spacing-sm); display: flex; align-items: center; gap: var(--spacing-xs);">
+                  <span style="font-size: 1.5rem;">👁️</span> 肉眼無法察覺
+                </h4>
+                <ul style="list-style: disc; padding-left: 1.5rem; font-size: 0.875rem; color: var(--color-text-secondary);">
+                  <li>奈米級的異味分子(低至 ppb 濃度)</li>
+                  <li>空氣中的細菌、病毒與黴菌孢子</li>
+                  <li>揮發性有機化合物(TVOCs)累積</li>
+                </ul>
+              </div>
+              <div style="background: white; border-radius: var(--radius-md); padding: var(--spacing-lg);">
+                <h4 style="font-weight: 700; margin-bottom: var(--spacing-sm); display: flex; align-items: center; gap: var(--spacing-xs);">
+                  <span style="font-size: 1.5rem;">🔬</span> 科學儀器可見
+                </h4>
+                <ul style="list-style: disc; padding-left: 1.5rem; font-size: 0.875rem; color: var(--color-text-secondary);">
+                  <li>官能實驗室的三點比較式嗅袋法</li>
+                  <li>落菌實驗與冷光儀檢測</li>
+                  <li>連續監測儀器的趨勢分析</li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- 科學驗證影片區域 -->
+            <div style="margin-top: var(--spacing-xl); text-align: center;">
+              <div style="background: white; border-radius: var(--radius-lg); padding: var(--spacing-xl); box-shadow: var(--shadow-md);">
+                <h4 style="font-weight: 700; margin-bottom: var(--spacing-md); color: var(--color-primary);">
+                  🎬 科學驗證示範影片
+                </h4>
+                <p style="margin-bottom: var(--spacing-lg); color: var(--color-text-secondary);">
+                  觀看主動式環境淨化設備的實際檢測過程
+                </p>
+                <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-lg);">
+                  <iframe 
+                    src="https://www.youtube.com/embed/eYyq8Aa6BX0" 
+                    title="科學驗證影片"
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                  </iframe>
+                </div>
+                <div style="margin-top: var(--spacing-md);">
+                  <a href="https://youtu.be/eYyq8Aa6BX0" target="_blank" style="color: var(--color-primary); text-decoration: none; font-weight: 500;">
+                    📺 在 YouTube 上觀看 →
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div style="padding: var(--spacing-lg); background-color: rgba(5, 150, 105, 0.1); border-left: 4px solid var(--color-secondary); border-radius: var(--radius-md);">
+            <p style="font-weight: 700; font-size: 1.125rem; margin-bottom: var(--spacing-sm);">政策意義</p>
+            <p style="color: var(--color-text-secondary);">
+              透過科學檢測,我們能將「感覺不舒服」這種主觀感受,轉化為「異味改善率 85%」、「細菌數下降 99.9%」等客觀數據。這不僅為政府提供了驗收標準,更為公務人員創造了可量化、可宣傳的政績基礎。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 權威數據與長期測試 -->
+    <section class="section" style="background-color: var(--color-gray-50);">
+      <div class="container">
+        <div class="max-w-5xl mx-auto">
+          <div class="text-center mb-12">
+            <div style="font-size: 3rem; color: var(--color-secondary); margin-bottom: var(--spacing-md);">🧪</div>
+            <h2 class="section-title" style="margin-bottom: var(--spacing-md);">權威數據支持</h2>
+            <p class="section-subtitle">
+              超過 2000 天的連續測試,驗證技術的穩定性與可靠性
+            </p>
+          </div>
+          
+          <div class="evidence-card-grid mb-12">
+            <div class="evidence-card">
+              <div class="evidence-card-value" style="color: var(--color-primary);">2000+</div>
+              <div class="evidence-card-title">天數</div>
+              <div class="evidence-card-desc">Fusion 長期連續測試保證,驗證設備的耐用性與持續效能</div>
+            </div>
+            <div class="evidence-card">
+              <div class="evidence-card-value" style="color: var(--color-secondary);">99.9%</div>
+              <div class="evidence-card-title">滅菌率</div>
+              <div class="evidence-card-desc">對細菌、病毒、黴菌等微生物的滅活效能,經實驗室驗證</div>
+            </div>
+            <div class="evidence-card">
+              <div class="evidence-card-value" style="color: #3b82f6;">70%+</div>
+              <div class="evidence-card-title">污染物去除率</div>
+              <div class="evidence-card-desc">針對 TVOCs、甲醛等化學污染物的去除效能</div>
+            </div>
+          </div>
+          
+          <div style="background: white; border-radius: var(--radius-lg); padding: var(--spacing-2xl); border: 2px solid var(--color-primary);">
+            <div style="font-size: 2rem; color: var(--color-primary); margin-bottom: var(--spacing-md);">🏆</div>
+            <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: var(--spacing-lg);">官能實驗室驗證</h3>
+            <p style="margin-bottom: var(--spacing-lg);">
+              南部縣市(如高雄市、台南市)已自行成立官能實驗室,採用「異味污染物官能測定法」(三點比較式嗅袋法,NIEA A201.11C)進行科學化檢測。
+            </p>
+            <div style="background-color: var(--color-gray-100); border-radius: var(--radius-md); padding: var(--spacing-xl);">
+              <h4 style="font-weight: 700; margin-bottom: var(--spacing-md);">檢測流程</h4>
+              <ol style="list-style: decimal; padding-left: 1.5rem; color: var(--color-text-secondary);">
+                <li class="process-step">
+                  <h4 style="color: var(--color-primary);">1. 前測：</h4>
+                  在設備安裝前,採集現場空氣樣本,送官能實驗室檢測異味濃度基準值
+                </li>
+                <li class="process-step">
+                  <h4 style="color: var(--color-primary);">2. 導入：</h4>
+                  安裝符合標準的主動式環境淨化設備,持續運作一定時間(如 30 天)
+                </li>
+                <li class="process-step">
+                  <h4 style="color: var(--color-primary);">3. 後測：</h4>
+                  再次採集空氣樣本,進行相同檢測,比對前後數據
+                </li>
+                <li class="process-step">
+                  <h4 style="color: var(--color-primary);">4. 驗收：</h4>
+                  若異味改善率達標(如降低 70% 以上),即通過驗收,成為可宣傳的政績數據
+                </li>
+              </ol>
+            </div>
+            <p style="font-size: 0.875rem; color: var(--color-text-secondary); margin-top: var(--spacing-lg);">
+              這套流程確保了所有改善成果都有科學依據,避免主觀判斷的爭議,為政府提供了堅實的政策推動基礎。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 多重效益 -->
+    <section class="section">
+      <div class="container">
+        <div class="max-w-5xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="section-title" style="margin-bottom: var(--spacing-md);">超越單一功能的多重效益</h2>
+            <p class="section-subtitle">
+              一次投資,解決防黴、除異味、節能、防疫等多重需求
+            </p>
+          </div>
+          
+          <!-- 2x2 卡片布局 -->
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--spacing-2xl); max-width: 1000px; margin: 0 auto;">
+            <!-- 第一排左邊：防黴抗菌 -->
+            <div style="background: white; border-radius: var(--radius-lg); padding: var(--spacing-2xl); box-shadow: var(--shadow-md); text-align: center; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='var(--shadow-xl)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow-md)'">
+              <div style="font-size: 4rem; margin-bottom: var(--spacing-lg); color: #3b82f6;">🛡️</div>
+              <h3 style="font-weight: 700; font-size: 1.5rem; margin-bottom: var(--spacing-md); color: var(--color-gray-900);">防黴抗菌</h3>
+              <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-lg); line-height: 1.6;">
+                主動分解空氣中與物體表面的黴菌孢子、細菌與病毒,有效抑制微生物生長,降低疾病傳播風險。
+              </p>
+              <div style="background-color: var(--color-gray-100); border-radius: var(--radius-md); padding: var(--spacing-md); font-size: 0.9375rem;">
+                <strong>應用場景：</strong>公廁、醫院、學校、托育中心等高風險環境
+              </div>
+            </div>
+            
+            <!-- 第一排右邊：除異味 -->
+            <div style="background: white; border-radius: var(--radius-lg); padding: var(--spacing-2xl); box-shadow: var(--shadow-md); text-align: center; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='var(--shadow-xl)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow-md)'">
+              <div style="font-size: 4rem; margin-bottom: var(--spacing-lg); color: #f59e0b;">⚡</div>
+              <h3 style="font-weight: 700; font-size: 1.5rem; margin-bottom: var(--spacing-md); color: var(--color-gray-900);">除異味</h3>
+              <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-lg); line-height: 1.6;">
+                從源頭分解奈米級異味分子(如氨氣、硫化氫、油煙等),而非僅用香精掩蓋,實現真正的空氣淨化。
+              </p>
+              <div style="background-color: var(--color-gray-100); border-radius: var(--radius-md); padding: var(--spacing-md); font-size: 0.9375rem;">
+                <strong>應用場景：</strong>餐廳、公廁、廚餘處理區、寵物空間等
+              </div>
+            </div>
+            
+            <!-- 第二排左邊：節能環保 -->
+            <div style="background: white; border-radius: var(--radius-lg); padding: var(--spacing-2xl); box-shadow: var(--shadow-md); text-align: center; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='var(--shadow-xl)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow-md)'">
+              <div style="font-size: 4rem; margin-bottom: var(--spacing-lg); color: var(--color-secondary);">🍃</div>
+              <h3 style="font-weight: 700; font-size: 1.5rem; margin-bottom: var(--spacing-md); color: var(--color-gray-900);">節能環保</h3>
+              <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-lg); line-height: 1.6;">
+                採用主動式淨化技術,無需頻繁更換濾網,運作功耗低,符合永續發展目標,降低長期維護成本。
+              </p>
+              <div style="background-color: var(--color-gray-100); border-radius: var(--radius-md); padding: var(--spacing-md); font-size: 0.9375rem;">
+                <strong>政策意義：</strong>符合「淨零碳排」、「循環經濟」等中央政策方向
+              </div>
+            </div>
+            
+            <!-- 第二排右邊：降低 TVOCs -->
+            <div style="background: white; border-radius: var(--radius-lg); padding: var(--spacing-2xl); box-shadow: var(--shadow-md); text-align: center; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='var(--shadow-xl)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow-md)'">
+              <div style="font-size: 4rem; margin-bottom: var(--spacing-lg); color: #9333ea;">📉</div>
+              <h3 style="font-weight: 700; font-size: 1.5rem; margin-bottom: var(--spacing-md); color: var(--color-gray-900);">降低 TVOCs</h3>
+              <p style="color: var(--color-text-secondary); margin-bottom: var(--spacing-lg); line-height: 1.6;">
+                有效去除甲醛、苯等揮發性有機化合物,改善室內空氣品質,符合《室內空氣品質管理法》要求。
+              </p>
+              <div style="background-color: var(--color-gray-100); border-radius: var(--radius-md); padding: var(--spacing-md); font-size: 0.9375rem;">
+                <strong>應用場景：</strong>新裝修建築、辦公大樓、學校、圖書館等公告場所
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 專業背書 -->
+    <section class="section section-light">
+      <div class="container">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-12">
+            <h2 class="section-title" style="margin-bottom: var(--spacing-md); color: var(--color-gray-900) !important; font-weight: 800;">專業技師簽證保障</h2>
+            <p class="section-subtitle" style="color: var(--color-text-primary) !important; font-weight: 500;">
+              確保工程設計符合法規，為公務人員提供執行保障
+            </p>
+          </div>
+          
+          <div class="guarantee-card">
+            <div class="guarantee-item">
+              <div class="guarantee-icon">✅</div>
+              <div>
+                <h4 style="font-weight: 700; margin-bottom: var(--spacing-xs);">建築物空氣調節設備專業技師</h4>
+                <p class="text-sm text-muted-foreground">
+                  根據《室內空氣品質管理法施行細則》,室內空氣品質維護管理計畫及設計,需由專業技師簽證。這確保了工程設計的專業性與合規性。
+                </p>
+              </div>
+            </div>
+            
+            <div class="guarantee-item">
+              <div class="guarantee-icon">✅</div>
+              <div>
+                <h4 style="font-weight: 700; margin-bottom: var(--spacing-xs);">第三方檢測機構驗證</h4>
+                <p class="text-sm text-muted-foreground">
+                  所有效能數據需經過具公信力的第三方檢測機構(如 SGS、工研院、官能實驗室等)驗證,確保數據真實可靠。
+                </p>
+              </div>
+            </div>
+            
+            <div class="guarantee-item">
+              <div class="guarantee-icon">✅</div>
+              <div>
+                <h4 style="font-weight: 700; margin-bottom: var(--spacing-xs);">政府採購法遵循</h4>
+                <p class="text-sm text-muted-foreground">
+                  所有採購流程嚴格遵循《政府採購法》,採公開招標方式,任何符合標準的廠商都能參與競標,確保公平性與透明度。
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div style="margin-top: var(--spacing-xl); padding: var(--spacing-xl); background-color: var(--color-primary); color: white; border-radius: var(--radius-lg); text-align: center;">
+            <p style="font-size: 1.25rem; font-weight: 700; margin-bottom: var(--spacing-sm);">
+              科學實證 + 專業簽證 + 法規遵循 = 政策推動的三重保障
+            </p>
+            <p style="font-size: 1rem; opacity: 0.9;">
+              為公務人員提供安心推動的堅實基礎,將環境改善轉化為確切的政績
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  
+  <!-- 頁尾 -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 WETOP 泉康科技. All Rights Reserved.</p>
+    </div>
+  </footer>
+  
+  <script src="main.js"></script>
+</body>
+</html>

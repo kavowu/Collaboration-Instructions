@@ -1,0 +1,463 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="合作夥伴頁面 - 提供分眾溝通">
+  <title>合作夥伴頁面 - 環境品質標準政策</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .partner-card-grid {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xl);
+    }
+    
+    .partner-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-xl);
+      box-shadow: var(--shadow-md);
+      border: 2px solid var(--color-gray-200);
+      transition: all var(--transition-fast);
+      display: flex;
+      gap: calc(var(--spacing-3xl) + var(--spacing-xl));
+      align-items: flex-start;
+    }
+    
+    .partner-card:hover {
+      border-color: var(--color-primary);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    /* 統一左側圖標區域寬度，讓內容有充足的右移空間 */
+    .partner-info-section {
+      flex-shrink: 0;
+      text-align: center;
+      min-width: 200px;
+      max-width: 200px;
+      padding-right: var(--spacing-2xl);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+    
+    .partner-icon {
+      font-size: 2.5rem !important;
+      margin-bottom: var(--spacing-md) !important;
+      line-height: 1 !important;
+      display: block !important;
+    }
+    
+    /* 統一標題高度和對齊 */
+    .partner-content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-lg);
+      align-items: flex-start;
+      flex: 1;
+    }
+    
+    .partner-content-section h4 {
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    /* 響應式設計：小螢幕時改為垂直佈局 */
+    @media (max-width: 768px) {
+      .partner-card {
+        flex-direction: column !important;
+        text-align: center;
+      }
+      
+      .partner-info-section {
+        max-width: none !important;
+        min-width: auto !important;
+      }
+      
+      .partner-content-grid {
+        grid-template-columns: 1fr !important;
+        gap: var(--spacing-md) !important;
+      }
+    }
+    
+    .partner-icon {
+      width: 3rem;
+      height: 3rem;
+      margin-bottom: var(--spacing-md);
+      color: var(--color-primary);
+    }
+    
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--spacing-lg);
+    }
+    
+    .contact-card {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      text-align: center;
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-lg);
+    }
+    
+    .contact-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      margin: 0 auto var(--spacing-md);
+    }
+    
+    .faq-list {
+      margin-top: var(--spacing-xl);
+    }
+    
+    .faq-card {
+      border: 1px solid var(--color-gray-200);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--spacing-md);
+      overflow: hidden;
+    }
+    
+    .faq-title {
+      font-weight: 600;
+      padding: var(--spacing-md);
+      cursor: pointer;
+      background-color: var(--color-gray-50);
+      border-bottom: 1px solid var(--color-gray-200);
+      transition: background-color var(--transition-fast);
+    }
+    
+    .faq-title:hover {
+      background-color: var(--color-gray-100);
+    }
+    
+    .faq-content {
+      padding: var(--spacing-md);
+      display: none;
+      color: var(--color-text-secondary);
+      transition: all var(--transition-fast);
+    }
+    
+    .faq-card.open .faq-content {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- 社交媒體固定按鈕 -->
+  <div class="social-buttons">
+    <a href="https://www.facebook.com/WetopTW" target="_blank" class="social-button facebook" title="Facebook">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+      </svg>
+    </a>
+    <a href="https://page.line.me/wetop?openQrModal=true" target="_blank" class="social-button line" title="LINE">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.070 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+      </svg>
+    </a>
+    <a href="#top" class="social-button top-button" title="回到頂部">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+      </svg>
+    </a>
+  </div>
+  
+  <!-- 導航列 -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-brand">
+        <img src="wetop-logo.png" alt="WETOP Logo" class="navbar-logo">
+        <span>環境品質標準政策</span>
+      </a>
+      
+      <button class="navbar-toggle" aria-label="選單">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <ul class="navbar-menu">
+        <li><a href="index.html">首頁</a></li>
+        <li><a href="innovation-model.html">創新模式</a></li>
+        <li><a href="application-scenarios.html">應用場景</a></li>
+        <li><a href="scientific-evidence.html">科學實證</a></li>
+        <li><a href="partners.html">合作夥伴</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <!-- 主要內容 -->
+  <main>
+    
+    <!-- Hero Section -->
+    <section class="page-header">
+      <div class="container">
+        <div class="page-category">合作共創</div>
+        <h1 class="page-title text-balance">
+          攜手共創健康未來
+        </h1>
+        <p class="page-subtitle text-pretty">
+          無論您的角色，都能在這個創新模式中找到價值
+        </p>
+      </div>
+    </section>
+    
+    <!-- 分眾溝通 -->
+    <section class="section">
+      <div class="container">
+        <div style="max-width: 1000px; margin: 0 auto;">
+          <h2 class="section-title" style="margin-bottom: var(--spacing-3xl);">我們能為您做什麼?</h2>
+          
+          <div class="partner-card-grid">
+            
+            <!-- 地方政府官員 -->
+            <div class="partner-card" style="border-color: var(--color-primary);">
+              <div class="partner-info-section">
+                <div class="partner-icon" style="color: var(--color-primary);">🏛️</div>
+                <h3 style="font-size: 1.25rem; font-weight: 700; margin: 0;">地方政府官員</h3>
+                <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin: 0; line-height: 1.4;">環保局、衛生局、觀光局、工務局等相關單位</p>
+              </div>
+              
+              <div class="partner-content-grid">
+                <div class="partner-content-section">
+                  <h4 style="color: var(--color-primary);">我們提供</h4>
+                  <ul style="list-style: disc; padding-left: 1.2rem; font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.6;">
+                    <li>完整的政策推動 SOP 與法規依據說明</li>
+                    <li>中央補助申請的協助與輔導</li>
+                    <li>科學化驗收標準的建立與執行指導</li>
+                    <li>成功案例分享與政績宣傳策略建議</li>
+                  </ul>
+                </div>
+                
+                <div class="partner-content-section">
+                  <h4 style="color: var(--color-primary);">您將獲得</h4>
+                  <ul style="list-style: disc; padding-left: 1.2rem; font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.6;">
+                    <li>可量化、可宣傳的施政亮點</li>
+                    <li>符合中央法規的執行保障</li>
+                    <li>民眾滿意度與支持度的提升</li>
+                    <li>跨局處合作的成功典範</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 場所管理人 -->
+            <div class="partner-card" style="border-color: var(--color-secondary);">
+              <div class="partner-info-section">
+                <div class="partner-icon" style="color: var(--color-secondary);">🏪</div>
+                <h3 style="font-size: 1.25rem; font-weight: 700; margin: 0;">場所管理人</h3>
+                <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin: 0; line-height: 1.4;">餐廳、飯店、百貨、醫院、學校、宗教場所等</p>
+              </div>
+              
+              <div class="partner-content-grid">
+                <div class="partner-content-section">
+                  <h4 style="color: var(--color-secondary);">我們提供</h4>
+                  <ul style="list-style: disc; padding-left: 1.2rem; font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.6;">
+                    <li>符合法規要求的解決方案諮詢</li>
+                    <li>環境品質改善的效益評估</li>
+                    <li>政府補助資源的申請協助</li>
+                    <li>認證標章的取得輔導</li>
+                  </ul>
+                </div>
+                
+                <div class="partner-content-section">
+                  <h4 style="color: var(--color-secondary);">您將獲得</h4>
+                  <ul style="list-style: disc; padding-left: 1.2rem; font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.6;">
+                    <li>符合法規,避免罰款與停業風險</li>
+                    <li>顯著改善環境品質,提升顧客滿意度</li>
+                    <li>取得官方認證,創造行銷優勢</li>
+                    <li>降低長期維護成本,節能環保</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 專業技師 -->
+            <div class="partner-card" style="border-color: #3b82f6;">
+              <div class="partner-info-section">
+                <div class="partner-icon" style="color: #3b82f6;">🛠️</div>
+                <h3 style="font-size: 1.25rem; font-weight: 700; margin: 0;">專業技師</h3>
+                <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin: 0; line-height: 1.4;">建築物空調設備專業技師、環境工程技師等</p>
+              </div>
+              
+              <div class="partner-content-grid">
+                <div class="partner-content-section">
+                  <h4 style="color: #3b82f6;">我們提供</h4>
+                  <ul style="list-style: disc; padding-left: 1.2rem; font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.6;">
+                    <li>最新的技術標準與法規更新資訊</li>
+                    <li>工程設計與簽證的技術支援</li>
+                    <li>驗收標準與檢測方法的專業培訓</li>
+                    <li>跨領域合作的專案媒合機會</li>
+                  </ul>
+                </div>
+                
+                <div class="partner-content-section">
+                  <h4 style="color: #3b82f6;">您將獲得</h4>
+                  <ul style="list-style: disc; padding-left: 1.2rem; font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.6;">
+                    <li>開拓新的專業服務市場</li>
+                    <li>提升專業能力與競爭力</li>
+                    <li>參與政府重大專案的機會</li>
+                    <li>建立專業聲譽與業界影響力</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 一般民眾 -->
+            <div class="partner-card" style="border-color: #9333ea;">
+              <div class="partner-info-section">
+                <div class="partner-icon" style="color: #9333ea;">👥</div>
+                <h3 style="font-size: 1.25rem; font-weight: 700; margin: 0;">一般民眾</h3>
+                <p style="color: var(--color-text-secondary); font-size: 0.875rem; margin: 0; line-height: 1.4;">關心環境品質與健康的所有公民</p>
+              </div>
+              
+              <div class="partner-content-grid">
+                <div class="partner-content-section">
+                  <h4 style="color: #9333ea;">我們提供</h4>
+                  <ul style="list-style: disc; padding-left: 1.2rem; font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.6;">
+                    <li>環境品質相關知識的科普教育</li>
+                    <li>政府政策推動進度的透明資訊</li>
+                    <li>認證場所的查詢與推薦</li>
+                    <li>環境問題的陳情管道與回應</li>
+                  </ul>
+                </div>
+                
+                <div class="partner-content-section">
+                  <h4 style="color: #9333ea;">您將獲得</h4>
+                  <ul style="list-style: disc; padding-left: 1.2rem; font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.6;">
+                    <li>更健康、更舒適的公共環境</li>
+                    <li>降低疾病風險,保護家人健康</li>
+                    <li>享受政府施政成果的實質效益</li>
+                    <li>參與環境改善的公民力量</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 聯繫方式 -->
+    <section class="section" style="background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); color: white;">
+      <div class="container">
+        <div style="max-width: 800px; margin: 0 auto;">
+          <div class="text-center" style="margin-bottom: var(--spacing-2xl);">
+            <h2 class="section-title" style="color: white;">聯繫我們</h2>
+            <p style="font-size: 1.125rem; opacity: 0.9;">
+              無論您有任何疑問或合作意向,歡迎隨時與我們聯繫
+            </p>
+          </div>
+          
+          <div class="contact-grid">
+            <div class="contact-card">
+              <div class="contact-icon">🏢</div>
+              <h4 style="font-weight: 700; margin-bottom: var(--spacing-sm);">聯絡泉康科技</h4>
+              <p style="font-size: 0.9375rem; opacity: 0.9;">www.wetoptec.com.tw</p>
+              <p style="font-size: 0.75rem; opacity: 0.75; margin-top: var(--spacing-xs);">kavowu@wetoptec.com.tw</p>
+            </div>
+            
+            <div class="contact-card">
+              <div class="contact-icon">📞</div>
+              <h4 style="font-weight: 700; margin-bottom: var(--spacing-sm);">服務專線</h4>
+              <p style="font-size: 0.9375rem; opacity: 0.9;">+886-3-668-5878</p>
+              <p style="font-size: 0.75rem; opacity: 0.75; margin-top: var(--spacing-xs);">週一至週五 10:00-18:00</p>
+            </div>
+            
+            <div class="contact-card">
+              <div class="contact-icon">📍</div>
+              <h4 style="font-weight: 700; margin-bottom: var(--spacing-sm);">辦公地址</h4>
+              <p style="font-size: 0.9375rem; opacity: 0.9;">新竹縣竹北市文興路一段360號</p>
+              
+            </div>
+          </div>
+          
+          <div style="margin-top: var(--spacing-2xl); padding: var(--spacing-xl); background-color: rgba(255, 255, 255, 0.1); border-radius: var(--radius-xl); text-align: center; border: 1px solid rgba(255, 255, 255, 0.2);">
+            <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: var(--spacing-md);">政策推動專案諮詢</h3>
+            <p style="margin-bottom: var(--spacing-md); opacity: 0.9;">
+              如您是地方政府官員,希望了解如何在您的轄區推動此政策,我們提供一對一的專案諮詢服務,協助您規劃完整的執行方案。
+            </p>
+            <p style="font-size: 0.875rem; opacity: 0.75;">
+              請來信註明您的單位、職稱與聯絡方式,我們將儘快安排專人與您聯繫。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- 常見問題 -->
+    <section class="section">
+      <div class="container">
+        <div style="max-width: 800px; margin: 0 auto;">
+          <h2 class="section-title" style="margin-bottom: var(--spacing-2xl);">常見問題</h2>
+          
+          <div class="faq-list">
+            
+            <div class="faq-card">
+              <div class="faq-title">Q: 這個政策是否只適用於特定品牌的設備?</div>
+              <div class="faq-content">
+                <strong>A:</strong> 絕對不是。政府制定的是「主動式環境淨化設備」的驗收標準,任何廠商的產品只要能通過科學驗證、符合標準,都能參與公開採購競標。這確保了市場的公平競爭與政府的中立性。
+              </div>
+            </div>
+            
+            <div class="faq-card">
+              <div class="faq-title">Q: 如何確保改善成效是真實可信的?</div>
+              <div class="faq-content">
+                <strong>A:</strong> 所有成效都需經過官能實驗室或第三方檢測機構的科學驗證,採用國家標準方法(如三點比較式嗅袋法、落菌實驗等)進行前後對比測試,確保數據的客觀性與可信度。
+              </div>
+            </div>
+            
+            <div class="faq-card">
+              <div class="faq-title">Q: 地方政府推動此政策需要額外的預算嗎?</div>
+              <div class="faq-content">
+                <strong>A:</strong> 可透過中央補助機制(如空污基金、觀光署、商業發展署等)申請專案補助,大幅降低地方財政負擔。我們也提供補助申請的協助與輔導服務。
+              </div>
+            </div>
+            
+            <div class="faq-card">
+              <div class="faq-title">Q: 民眾如何知道哪些場所已通過認證?</div>
+              <div class="faq-content">
+                <strong>A:</strong> 通過驗證的場所將獲頒官方認證標章(如「五星級健康公廁」、「清新食尚餐廳」等),並在政府網站上公開查詢,讓民眾能輕鬆辨識與選擇。
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  
+  <!-- 頁尾 -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 WETOP 泉康科技. All Rights Reserved.</p>
+    </div>
+  </footer>
+  
+  <script>
+    // JavaScript for FAQ accordion
+    document.addEventListener('DOMContentLoaded', () => {
+      const faqTitles = document.querySelectorAll('.faq-title');
+
+      faqTitles.forEach(title => {
+        title.addEventListener('click', () => {
+          const parentCard = title.closest('.faq-card');
+          parentCard.classList.toggle('open');
+        });
+      });
+    });
+  </script>
+  <script src="main.js"></script>
+</body>
+</html>

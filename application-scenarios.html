@@ -1,0 +1,729 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="應用場景頁面 - 三大場景的具體規劃">
+  <title>應用場景頁面 - 環境品質標準政策</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .tabs-list {
+      display: flex;
+      justify-content: center;
+      margin-bottom: var(--spacing-2xl);
+      border-bottom: 2px solid var(--color-gray-200);
+    }
+    
+    .tabs-trigger {
+      padding: var(--spacing-md) var(--spacing-xl);
+      cursor: pointer;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+      border-bottom: 3px solid transparent;
+      transition: all var(--transition-fast);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+    
+    .tabs-trigger:hover {
+      color: var(--color-primary);
+    }
+    
+    .tabs-trigger.active {
+      color: var(--color-primary);
+      border-bottom-color: var(--color-primary);
+    }
+    
+    .tabs-content {
+      display: none;
+      padding-top: var(--spacing-xl);
+    }
+    
+    .tabs-content.active {
+      display: block;
+    }
+    
+    .scenario-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-xl);
+      box-shadow: var(--shadow-md);
+      margin-bottom: var(--spacing-lg);
+    }
+    
+    .scenario-card h4 {
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-md);
+    }
+    
+    .scenario-detail-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-lg);
+    }
+    
+    .solution-box {
+      border: 2px solid var(--color-primary);
+      background-color: rgba(30, 64, 175, 0.05);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-xl);
+    }
+    
+    .solution-box ol {
+      list-style: decimal;
+      padding-left: 1.5rem;
+    }
+    
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-md);
+      margin-top: var(--spacing-md);
+    }
+    
+    .result-item {
+      background-color: var(--color-gray-50);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-md);
+      text-align: center;
+    }
+    
+    .result-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-secondary);
+    }
+    
+    .result-label {
+      font-size: 0.875rem;
+      color: var(--color-text-secondary);
+    }
+    
+    /* 社交媒體按鈕樣式 */
+    .social-buttons {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 1000;
+    }
+    
+    .social-button {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .social-button:hover {
+      transform: translateX(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    }
+    
+    .social-button.facebook {
+      background-color: #1877F2;
+    }
+    
+    .social-button.facebook:hover {
+      background-color: #166FE5;
+    }
+    
+    .social-button.line {
+      background-color: #00C300;
+    }
+    
+    .social-button.line:hover {
+      background-color: #00B900;
+    }
+    
+    .social-button.top-button {
+      background-color: #4A90A4;
+    }
+    
+    .social-button.top-button:hover {
+      background-color: #3A7A8C;
+    }
+    
+    /* 響應式設計 */
+    @media (max-width: 768px) {
+      .social-buttons {
+        right: 10px;
+        gap: 10px;
+      }
+      
+      .social-button {
+        width: 45px;
+        height: 45px;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- 社交媒體固定按鈕 -->
+  <div class="social-buttons">
+    <a href="https://www.facebook.com/WetopTW" target="_blank" class="social-button facebook" title="Facebook">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+      </svg>
+    </a>
+    <a href="https://page.line.me/wetop?openQrModal=true" target="_blank" class="social-button line" title="LINE">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.070 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+      </svg>
+    </a>
+    <a href="#top" class="social-button top-button" title="回到頂部">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+      </svg>
+    </a>
+  </div>
+  
+  <!-- 導航列 -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="navbar-brand">
+        <img src="wetop-logo.png" alt="WETOP Logo" class="navbar-logo">
+        <span>環境品質標準政策</span>
+      </a>
+      
+      <button class="navbar-toggle" aria-label="選單">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <ul class="navbar-menu">
+        <li><a href="index.html">首頁</a></li>
+        <li><a href="innovation-model.html">創新模式</a></li>
+        <li><a href="application-scenarios.html">應用場景</a></li>
+        <li><a href="scientific-evidence.html">科學實證</a></li>
+        <li><a href="partners.html">合作夥伴</a></li>
+      </ul>
+    </div>
+  </nav>
+  
+  <!-- 主要內容 -->
+  <main>
+    
+    <!-- Hero Section -->
+    <section class="page-header">
+      <div class="container">
+        <div class="page-category">實踐案例</div>
+        <h1 class="page-title text-balance">
+          從民生痛點到施政亮點
+        </h1>
+        <p class="page-subtitle text-pretty">
+          三大場景的具體規劃與成功路徑
+        </p>
+      </div>
+    </section>
+    
+    <!-- 三大場景 Tabs -->
+    <section class="section">
+      <div class="container">
+        <div class="tabs-container" style="max-width: 1200px; margin: 0 auto;">
+          <div class="tabs-list" id="scenario-tabs">
+            <div class="tabs-trigger active" data-tab="toilet">公廁環境改善</div>
+            <div class="tabs-trigger" data-tab="restaurant">餐飲業環境改善</div>
+            <div class="tabs-trigger" data-tab="religion">宗教場所環境改善</div>
+          </div>
+          
+          <!-- 場景一：公廁環境改善 -->
+          <div class="tabs-content active" id="toilet">
+            <div class="text-center mb-xl">
+              <h2 class="section-title">「五星級健康公廁」計畫</h2>
+              <p class="section-subtitle">徹底解決公廁異味與病菌問題,創造超越民眾期待的體驗</p>
+            </div>
+            
+            <div class="scenario-detail-grid">
+              <div class="scenario-card" style="border-top: 5px solid var(--color-danger);">
+                <h4>問題與痛點</h4>
+                <div class="space-y-md">
+                  <div>
+                    <h5 style="font-weight: 600;">核心痛點</h5>
+                    <p style="font-size: 0.9375rem; color: var(--color-text-secondary);">長期存在的氨氣、硫化氫等惡臭,以及潮濕環境滋生的細菌、病毒與黴菌,嚴重影響民眾觀感。</p>
+                  </div>
+                  <div>
+                    <h5 style="font-weight: 600;">民眾觀感</h5>
+                    <p style="font-size: 0.9375rem; color: var(--color-text-secondary);">傳統清潔方式(噴灑香精、加強洗滌)治標不治本,僅能短暫掩蓋問題,無法根除污染源,導致民眾普遍對公廁衛生缺乏信心。</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="scenario-card" style="border-top: 5px solid var(--color-secondary);">
+                <h4>法規驅動</h4>
+                <div class="space-y-md">
+                  <div>
+                    <h5 style="font-weight: 600;">主要依據</h5>
+                    <p style="font-size: 0.9375rem; color: var(--color-text-secondary);">《室內空氣品質管理法》。高鐵站、機場、捷運站、醫院、百貨公司等場所的公廁,均屬於該法規定的公告場所,有法定義務維持室內空氣品質。</p>
+                  </div>
+                  <div>
+                    <h5 style="font-weight: 600;">策略應用</h5>
+                    <p style="font-size: 0.9375rem; color: var(--color-text-secondary);">將法規從「最低標準」提升為「品質追求」,主張「無味」只是基礎,「健康」才是目標。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="solution-box" style="margin-top: var(--spacing-2xl);">
+              <h4 style="color: var(--color-primary); font-size: 1.25rem;">標準化解決方案</h4>
+              <p style="margin-bottom: var(--spacing-md);">
+                安裝符合政府新訂標準的「主動式環境淨化設備」。此類設備需能<strong>主動分解</strong>空氣中與物體表面的臭味分子、細菌與病毒,並有效抑制黴菌生長,提供 24 小時不間斷的深層淨化。
+              </p>
+              <div style="background-color: white; padding: var(--spacing-md); border-radius: var(--radius-md);">
+                <h5 style="font-weight: 600; margin-bottom: var(--spacing-sm);">導入與執行步驟：</h5>
+                <ol style="font-size: 0.9375rem; color: var(--color-text-secondary);">
+                  <li><strong>選定示範點：</strong>優先選擇交通樞紐(如高鐵站、轉運站)、觀光景點、大型公園的公廁作為示範點</li>
+                  <li><strong>建立量化標準：</strong>與地方環保局的官能實驗室合作,進行異味指數檢測與菌落數檢測,取得科學化改善數據</li>
+                  <li><strong>申請中央補助：</strong>向交通部觀光署、環境部等單位申請專案補助,降低地方財政壓力</li>
+                  <li><strong>擴大推廣：</strong>將此模式納入《地方政府公廁管理維護標準作業程序(SOP)》,要求新建或翻修的公廁必須將符合標準的設備列為標準配備</li>
+                </ol>
+              </div>
+            </div>
+            
+            <div class="scenario-card" style="margin-top: var(--spacing-2xl); border-top: 5px solid var(--color-secondary);">
+              <h4>政績亮點與宣傳</h4>
+              <!-- 左右布局：左邊政績內容，右邊圖片 -->
+              <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: var(--spacing-xl); align-items: start; margin-top: var(--spacing-md);">
+                <!-- 左側：政績內容 -->
+                <div class="space-y-md">
+                  <div>
+                    <h5 style="font-weight: 600;">政績定位</h5>
+                    <p style="font-size: 0.9375rem; color: var(--color-text-secondary);">「科技防疫」、「智慧城鄉」、「觀光首都」的具體實踐</p>
+                  </div>
+                  <div>
+                    <h5 style="font-weight: 600;">宣傳口號</h5>
+                    <p style="font-size: 0.9375rem; color: var(--color-text-secondary);">「不只聞不到,更是看不到的乾淨」、「會呼吸的健康公廁」</p>
+                  </div>
+                  <div>
+                    <h5 style="font-weight: 600;">宣傳活動</h5>
+                    <p style="font-size: 0.9375rem; color: var(--color-text-secondary);">由地方首長召開記者會,發布前後對比的「異味改善率」、「細菌下降率」數據,並在獲認證的公廁貼上「五星級健康公廁」標章,創造媒體話題與民眾良好口碑。</p>
+                  </div>
+                </div>
+                
+                <!-- 右側：圖片3 -->
+                <div style="text-align: center;">
+                  <img 
+                    src="圖片3.jpg" 
+                    alt="政績亮點宣傳示意圖" 
+                    style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); max-height: 350px; object-fit: cover;"
+                  />
+                </div>
+              </div>
+            </div>
+            
+            <div style="margin-top: var(--spacing-2xl);">
+              <h3 class="section-title" style="font-size: 1.5rem;">示範情境與預期成效</h3>
+              <p class="section-subtitle" style="font-size: 0.875rem;">以下為規劃情境與預期效益,供政策推動者參考</p>
+              <div class="scenario-detail-grid">
+                <div class="scenario-card" style="border: 2px solid rgba(30, 64, 175, 0.2);">
+                  <h5 style="font-weight: 600; color: var(--color-primary);">情境A：高流量交通站點公廁改善</h5>
+                  <p style="font-size: 0.875rem; color: var(--color-text-secondary); margin-bottom: var(--spacing-md);">高鐵站、轉運站、捷運站等每日萬人流量的公共場所</p>
+                  <h6 style="font-weight: 600; font-size: 0.875rem;">建議執行單位</h6>
+                  <p style="font-size: 0.875rem; color: var(--color-text-secondary); margin-bottom: var(--spacing-md);">地方環保局 + 交通管理單位</p>
+                  <h6 style="font-weight: 600; font-size: 0.875rem;">預期改善成效</h6>
+                  <div class="result-grid">
+                    <div class="result-item">
+                      <div class="result-value" style="color: var(--color-primary);">70-85%</div>
+                      <div class="result-label">異味改善率</div>
+                    </div>
+                    <div class="result-item">
+                      <div class="result-value" style="color: var(--color-secondary);">95%+</div>
+                      <div class="result-label">細菌下降</div>
+                    </div>
+                    <div class="result-item">
+                      <div class="result-value" style="color: #3b82f6;">85%+</div>
+                      <div class="result-label">民眾滿意度</div>
+                    </div>
+                  </div>
+                  <h6 style="font-weight: 600; font-size: 0.875rem; margin-top: var(--spacing-md);">政績創造潛力</h6>
+                  <p style="font-size: 0.875rem; color: var(--color-text-secondary);">可打造「智慧城市」、「科技防疫」施政亮點,透過官能實驗室量化數據,創造媒體話題與民眾好評。</p>
+                </div>
+                
+                <div class="scenario-card" style="border: 2px solid rgba(5, 150, 105, 0.2);">
+                  <h5 style="font-weight: 600; color: var(--color-secondary);">情境B：觀光景點與公園公廁提升</h5>
+                  <p style="font-size: 0.875rem; color: var(--color-text-secondary); margin-bottom: var(--spacing-md);">結合廁所翻修工程,將環境淨化設備納入標準配備</p>
+                  <h6 style="font-weight: 600; font-size: 0.875rem;">建議執行單位</h6>
+                  <p style="font-size: 0.875rem; color: var(--color-text-secondary); margin-bottom: var(--spacing-md);">地方工務局或觀光局</p>
+                  <h6 style="font-weight: 600; font-size: 0.875rem;">預期改善成效</h6>
+                  <div class="result-grid">
+                    <div class="result-item">
+                      <div class="result-value" style="color: var(--color-primary);">75-90%</div>
+                      <div class="result-label">異味降幅</div>
+                    </div>
+                    <div class="result-item">
+                      <div class="result-value" style="color: var(--color-secondary);">90%+</div>
+                      <div class="result-label">黴菌下降</div>
+                    </div>
+                    <div class="result-item">
+                      <div class="result-value" style="color: #3b82f6;">30-50%</div>
+                      <div class="result-label">維護成本降低</div>
+                    </div>
+                  </div>
+                  <h6 style="font-weight: 600; font-size: 0.875rem; margin-top: var(--spacing-md);">政績創造潛力</h6>
+                  <p style="font-size: 0.875rem; color: var(--color-text-secondary);">可申請建設獎項,並將標準納入地方公廁管理SOP,成為全市新建公廁的標準配備,創造長期政績。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 場景二：餐飲業環境改善 -->
+          <div class="tabs-content" id="restaurant">
+            <div class="text-center mb-xl">
+              <h2 class="section-title">「清新食尚」認證計畫</h2>
+              <p class="section-subtitle">將法規壓力轉化為產業升級的助力,創造餐飲業與環境雙贏</p>
+            </div>
+            
+            <div class="scenario-detail-grid">
+              <div class="scenario-card" style="border-top: 5px solid var(--color-danger);">
+                <h4>問題與痛點</h4>
+                <div class="space-y-md">
+                  <div>
+                    <h5 style="font-weight: 600;">核心痛點</h5>
+                    <p style="font-size: 0.9375rem; color: var(--color-text-secondary);">烹飪油煙、餐廳後巷的廚餘及油脂截留器散發的複合性異味,嚴重影響空氣品質與鄰里關係。</p>
+                  </div>
+                  <div>
+                    <h5 style="font-weight: 600;">業者困境</h5>
+                    <p style="font-size: 0.9375rem; color: var(--color-text-secondary);">現有排煙設備多半只處理油煙,對「異味」處理效果不彰,即使合法安裝仍可能因異味遭民眾檢舉,面臨罰款與停業風險。</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="scenario-card" style="border-top: 5px solid var(--color-secondary);">
+                <h4>法規驅動</h4>
+                <div class="space-y-md">
+                  <div>
+                    <h5 style="font-weight: 600;">主要依據</h5>
+                    <p style="font-size: 0.9375rem; color: var(--color-text-secondary);">《空氣污染防制法》及其子法《餐飲業空氣污染防制設施管理辦法》。該法明確將「異味污染物」列為管制對象,並有具體罰則。</p>
+                  </div>
+                  <div>
+                    <h5 style="font-weight: 600;">策略應用</h5>
+                    <p style="font-size: 0.9375rem; color: var(--color-text-secondary);">利用南部縣市已建立官能實驗室的既有事實,將「通過官能測定」設定為餐飲業異味管制的最終驗收標準。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="solution-box" style="margin-top: var(--spacing-2xl);">
+              <h4 style="color: var(--color-primary); font-size: 1.25rem;">標準化解決方案</h4>
+              <p style="margin-bottom: var(--spacing-md);">
+                在餐廳的排煙系統末端或廚餘暫存區加裝符合標準的「主動式環境淨化設備」,在污染物排放前即時分解油煙與廚餘產生的異味分子,從源頭解決問題。
+              </p>
+              <div style="background-color: white; padding: var(--spacing-md); border-radius: var(--radius-md);">
+                <h5 style="font-weight: 600; margin-bottom: var(--spacing-sm);">導入與執行步驟：</h5>
+                <ol style="font-size: 0.9375rem; color: var(--color-text-secondary);">
+                  <li><strong>連結產業公會：</strong>與餐飲業同業公會合作,說明法規趨勢與新標準解決方案的效益,由公會出面號召業者參與</li>
+                  <li><strong>建立認證標準：</strong>以「官能實驗室檢測值低於管制標準」作為認證核心,將所有通過驗證的技術方案列為官方推薦選項</li>
+                  <li><strong>提供補助誘因：</strong>爭取中央(如經濟部商業發展署、環境部)的補助,針對率先升級設備的店家提供部分安裝費用補助</li>
+                  <li><strong>納入管理規範：</strong>針對新設立的餐飲業,將「安裝符合標準的異味處理設備」列為營業許可的審查要件之一</li>
+                </ol>
+              </div>
+            </div>
+            
+            <div class="scenario-card" style="margin-top: var(--spacing-2xl); border-top: 5px solid var(--color-secondary);">
+              <h4>政績亮點與宣傳</h4>
+              <!-- 左右布局：左邊政績內容，右邊圖片 -->
+              <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: var(--spacing-xl); align-items: start; margin-top: var(--spacing-md);">
+                <!-- 左側：政績內容 -->
+                <div class="space-y-md">
+                  <div>
+                    <h5 style="font-weight: 600;">政績定位</h5>
+                    <p style="font-size: 0.9375rem; color: var(--color-text-secondary);">「宜居城市」、「永續發展」、「庶民經濟」的守護者</p>
+                  </div>
+                  <div>
+                    <h5 style="font-weight: 600;">宣傳口號</h5>
+                    <p style="font-size: 0.9375rem; color: var(--color-text-secondary);">「安心呷,清心吸」、「只留美味,不留異味」</p>
+                  </div>
+                  <div>
+                    <h5 style="font-weight: 600;">宣傳活動</h5>
+                    <p style="font-size: 0.9375rem; color: var(--color-text-secondary);">地方政府舉辦「清新食尚」餐廳授證儀式,並製作美食地圖,向民眾推廣這些「對環境友善」的餐廳。這不僅為政府創造政績,也為餐廳帶來正面行銷效益,創造雙贏。</p>
+                  </div>
+                </div>
+                
+                <!-- 右側：圖片3 -->
+                <div style="text-align: center;">
+                  <img 
+                    src="圖片4.jpg" 
+                    alt="餐飲業政績亮點宣傳示意圖" 
+                    style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); max-height: 350px; object-fit: cover;"
+                  />
+                </div>
+              </div>
+            </div>
+            
+            <div style="margin-top: var(--spacing-2xl);">
+              <h3 class="section-title" style="font-size: 1.5rem;">示範情境與預期成效</h3>
+              <p class="section-subtitle" style="font-size: 0.875rem;">以下為規劃情境與預期效益,供政策推動者參考</p>
+              <div class="scenario-detail-grid">
+                <div class="scenario-card" style="border: 2px solid rgba(30, 64, 175, 0.2);">
+                  <h5 style="font-weight: 600; color: var(--color-primary);">情境A：夜市與商圈餐飲認證計畫</h5>
+                  <p style="font-size: 0.875rem; color: var(--color-text-secondary); margin-bottom: var(--spacing-md);">結合產業公會,對夜市或商圈餐廳進行群體輔導</p>
+                  <h6 style="font-weight: 600; font-size: 0.875rem;">建議執行單位</h6>
+                  <p style="font-size: 0.875rem; color: var(--color-text-secondary); margin-bottom: var(--spacing-md);">地方環保局 + 餐飲業職業工會</p>
+                  <h6 style="font-weight: 600; font-size: 0.875rem;">預期改善成效</h6>
+                  <div class="result-grid">
+                    <div class="result-item">
+                      <div class="result-value" style="color: var(--color-primary);">70-85%</div>
+                      <div class="result-label">油煙異味改善</div>
+                    </div>
+                    <div class="result-item">
+                      <div class="result-value" style="color: var(--color-secondary);">80%+</div>
+                      <div class="result-label">陳情案件減少</div>
+                    </div>
+                    <div class="result-item">
+                      <div class="result-value" style="color: #3b82f6;">10-20%</div>
+                      <div class="result-label">營業額提升</div>
+                    </div>
+                  </div>
+                  <h6 style="font-weight: 600; font-size: 0.875rem; margin-top: var(--spacing-md);">政績創造潛力</h6>
+                  <p style="font-size: 0.875rem; color: var(--color-text-secondary);">可打造「美食之都」品牌,透過認證標章創造差異化,同時解決空氣污染與鄰里糖紛,創造雙贏局面。</p>
+                </div>
+                
+                <div class="scenario-card" style="border: 2px solid rgba(5, 150, 105, 0.2);">
+                  <h5 style="font-weight: 600; color: var(--color-secondary);">情境B：餐廳廚餘暫存區改善</h5>
+                  <p style="font-size: 0.875rem; color: var(--color-text-secondary); margin-bottom: var(--spacing-md);">針對廚餘與油脂截留器異味問題的專項計畫</p>
+                  <h6 style="font-weight: 600; font-size: 0.875rem;">建議執行單位</h6>
+                  <p style="font-size: 0.875rem; color: var(--color-text-secondary); margin-bottom: var(--spacing-md);">地方環保局 + 中央補助單位</p>
+                  <h6 style="font-weight: 600; font-size: 0.875rem;">預期改善成效</h6>
+                  <div class="result-grid">
+                    <div class="result-item">
+                      <div class="result-value" style="color: var(--color-primary);">80-90%</div>
+                      <div class="result-label">廚餘異味改善</div>
+                    </div>
+                    <div class="result-item">
+                      <div class="result-value" style="color: var(--color-secondary);">85%+</div>
+                      <div class="result-label">油脂異味降低</div>
+                    </div>
+                    <div class="result-item">
+                      <div class="result-value" style="color: #3b82f6;">80%+</div>
+                      <div class="result-label">鄰里滿意度</div>
+                    </div>
+                  </div>
+                  <h6 style="font-weight: 600; font-size: 0.875rem; margin-top: var(--spacing-md);">政績創造潛力</h6>
+                  <p style="font-size: 0.875rem; color: var(--color-text-secondary);">可申請環境部空氣品質改善獎項,並將標準納入餐飲業管理自治條例,創造制度化長期效益。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 場景三：宗教場所環境改善 -->
+          <div class="tabs-content" id="religion">
+            <div class="text-center mb-xl">
+              <h2 class="section-title">「健康信仰空間」計畫</h2>
+              <p class="section-subtitle">關懷所有宗教信眾的呼吸健康,在聚會活動中創造安全的信仰空間</p>
+            </div>
+            
+            <div class="scenario-detail-grid">
+              <div class="scenario-card" style="border-top: 5px solid var(--color-danger);">
+                <h4>問題與痛點</h4>
+                <div class="space-y-md">
+                  <div>
+                    <h5 style="font-weight: 600;">人群聚集問題</h5>
+                    <p style="font-size: 0.9375rem; color: var(--color-text-secondary);">禮拜、彌撒、祈禱、法會等宗教活動中,大量信眾聚集於室內空間,CO2濃度上升、空氣品質下降,增加呼吸道疾病交叉感染風險。</p>
+                  </div>
+                  <div>
+                    <h5 style="font-weight: 600;">特定儀式污染</h5>
+                    <p style="font-size: 0.9375rem; color: var(--color-text-secondary);">部分宗教場所的燒香、點燭等傳統儀式產生PM2.5與TVOCs,加上長時間聚會的體味與異味,在通風不良的空間中累積,影響信眾健康。</p>
+                  </div>
+                  <div>
+                    <h5 style="font-weight: 600;">特殊族群關懷</h5>
+                    <p style="font-size: 0.9375rem; color: var(--color-text-secondary);">長者、兒童、呼吸道敏感者為宗教活動主要參與者,需要更高標準的空氣品質保護。</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="scenario-card" style="border-top: 5px solid var(--color-secondary);">
+                <h4>法規驅動</h4>
+                <div class="space-y-md">
+                  <div>
+                    <h5 style="font-weight: 600;">主要依據</h5>
+                    <p style="font-size: 0.9375rem; color: var(--color-text-secondary);">大型、人潮眾多的宗教場所(教堂、清真寺、宮廟、佛堂等)可被認定為《室內空氣品質管理法》中的「其他公告場所」,但執法上較為敏感。</p>
+                  </div>
+                  <div>
+                    <h5 style="font-weight: 600;">策略應用</h5>
+                    <p style="font-size: 0.9375rem; color: var(--color-text-secondary);">將重點從「法規強制」轉向「主動關懷」,以「保護所有宗教信眾的呼吸健康」為訴求,展現政府對多元宗教的尊重與關懷。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="solution-box" style="margin-top: var(--spacing-2xl);">
+              <h4 style="color: var(--color-primary); font-size: 1.25rem;">標準化解決方案</h4>
+              <p style="margin-bottom: var(--spacing-md);">
+                在宗教場所的主要聚會空間(禮拜堂、祈禱室、大殿等)安裝符合標準的「主動式環境淨化設備」,主動改善空氣品質、降低CO2濃度、減少異味累積,並降低交叉感染風險。對於有燒香傳統的場所,可同時處理PM2.5與TVOCs。
+              </p>
+              <div style="background-color: white; padding: var(--spacing-md); border-radius: var(--radius-md);">
+                <h5 style="font-weight: 600; margin-bottom: var(--spacing-sm);">導入與執行步驟：</h5>
+                <ol style="font-size: 0.9375rem; color: var(--color-text-secondary);">
+                  <li><strong>拜會宗教領袖：</strong>政務顧問偈同地方首長,親自拜會不同宗教的指標性場所領袖(教堂主任、清真寺伊瑪目、宮廟主委、住持等),說明「健康信仰空間」的理念,爭取認同與支持</li>
+                  <li><strong>打造示範場所：</strong>以專案補助方式,為一至二間指標性宗教場所採購並安裝設備,並在導入前後進行詳細的空氣品質監測,用數據證明改善成效</li>
+                  <li><strong>凝聚信眾共識：</strong>在示範場所舉辦說明會,向信眾展示空氣品質數據,讓他們親身體驗改善後的環境</li>
+                  <li><strong>鼓勵自主導入：</strong>示範成功後,透過各宗教團體網絡進行推廣,鼓勵其他場所為了信眾健康自主導入,政府可提供部分補助或低利貸款作為誘因</li>
+                </ol>
+              </div>
+            </div>
+            
+            <div class="scenario-card" style="margin-top: var(--spacing-2xl); border-top: 5px solid var(--color-secondary);">
+              <h4>政績亮點與宣傳</h4>
+              <!-- 左右布局：左邊政績內容，右邊圖片 -->
+              <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: var(--spacing-xl); align-items: start; margin-top: var(--spacing-md);">
+                <!-- 左側：政績內容 -->
+                <div class="space-y-md">
+                  <div>
+                    <h5 style="font-weight: 600;">政績定位</h5>
+                    <p style="font-size: 0.9375rem; color: var(--color-text-secondary);">「多元宗教關懷」、「健康城市」、「公共衛生」、「文化傳承與環境永續的結合」</p>
+                  </div>
+                  <div>
+                    <h5 style="font-weight: 600;">宣傳口號</h5>
+                    <p style="font-size: 0.9375rem; color: var(--color-text-secondary);">「誠心祈福,清新呼吸」、「守護信仰,守護健康」、「安全的信仰空間,安心的心靈寄託」</p>
+                  </div>
+                  <div>
+                    <h5 style="font-weight: 600;">宣傳活動</h5>
+                    <p style="font-size: 0.9375rem; color: var(--color-text-secondary);">舉辦「健康信仰空間示範場所」掛牌儀式,邀請不同宗教領袖與政府官員共同參與。將此案例作為政府尊重多元宗教、關懷所有信眾健康的典範,爭取各宗教團體與廣大信眾的認同與支持。</p>
+                  </div>
+                </div>
+                
+                <!-- 右側：圖片3 -->
+                <div style="text-align: center;">
+                  <img 
+                    src="圖片5.jpg" 
+                    alt="宗教場所政績亮點宣傳示意圖" 
+                    style="width: 100%; height: auto; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); max-height: 350px; object-fit: cover;"
+                  />
+                </div>
+              </div>
+            </div>
+            
+            <div style="margin-top: var(--spacing-2xl);">
+              <h3 class="section-title" style="font-size: 1.5rem;">示範情境與預期成效</h3>
+              <p class="section-subtitle" style="font-size: 0.875rem;">以下為規劃情境與預期效益,供政策推動者參考</p>
+              <div class="scenario-detail-grid">
+                <div class="scenario-card" style="border: 2px solid rgba(30, 64, 175, 0.2);">
+                  <h5 style="font-weight: 600; color: var(--color-primary);">情境A：高流量宗教場所空氣改善</h5>
+                  <p style="font-size: 0.875rem; color: var(--color-text-secondary); margin-bottom: var(--spacing-md);">教堂、清真寺、大型宮廟等週末聚會人潮眾多的場所</p>
+                  <h6 style="font-weight: 600; font-size: 0.875rem;">建議執行單位</h6>
+                  <p style="font-size: 0.875rem; color: var(--color-text-secondary); margin-bottom: var(--spacing-md);">地方民政局/宗教事務相關單位 + 場所管理單位</p>
+                  <h6 style="font-weight: 600; font-size: 0.875rem;">預期改善成效</h6>
+                  <div class="result-grid">
+                    <div class="result-item">
+                      <div class="result-value" style="color: var(--color-primary);">60-75%</div>
+                      <div class="result-label">PM2.5下降</div>
+                    </div>
+                    <div class="result-item">
+                      <div class="result-value" style="color: var(--color-secondary);">60%+</div>
+                      <div class="result-label">異味改善</div>
+                    </div>
+                    <div class="result-item">
+                      <div class="result-value" style="color: #3b82f6;">80%+</div>
+                      <div class="result-label">信眾滿意度</div>
+                    </div>
+                  </div>
+                  <h6 style="font-weight: 600; font-size: 0.875rem; margin-top: var(--spacing-md);">政績創造潛力</h6>
+                  <p style="font-size: 0.875rem; color: var(--color-text-secondary);">可打造「多元宗教關懷」、「公共衛生」施政亮點,透過不同宗教網絡形成示範效應,獲得各宗教團體與廣大信眾支持。</p>
+                </div>
+                
+                <div class="scenario-card" style="border: 2px solid rgba(5, 150, 105, 0.2);">
+                  <h5 style="font-weight: 600; color: var(--color-secondary);">情境B：燒香場所空氣品質提升</h5>
+                  <p style="font-size: 0.875rem; color: var(--color-text-secondary); margin-bottom: var(--spacing-md);">有燒香、點燭等傳統儀式的宗教場所(宮廟、佛寺等)</p>
+                  <h6 style="font-weight: 600; font-size: 0.875rem;">建議執行單位</h6>
+                  <p style="font-size: 0.875rem; color: var(--color-text-secondary); margin-bottom: var(--spacing-md);">地方民政局/文化局 + 場所管理單位</p>
+                  <h6 style="font-weight: 600; font-size: 0.875rem;">預期改善成效</h6>
+                  <div class="result-grid">
+                    <div class="result-item">
+                      <div class="result-value" style="color: var(--color-primary);">60-75%</div>
+                      <div class="result-label">PM2.5下降</div>
+                    </div>
+                    <div class="result-item">
+                      <div class="result-value" style="color: var(--color-secondary);">60-70%</div>
+                      <div class="result-label">TVOCs下降</div>
+                    </div>
+                    <div class="result-item">
+                      <div class="result-value" style="color: #3b82f6;">85%+</div>
+                      <div class="result-label">信眾滿意度</div>
+                    </div>
+                  </div>
+                  <h6 style="font-weight: 600; font-size: 0.875rem; margin-top: var(--spacing-md);">政績創造潛力</h6>
+                  <p style="font-size: 0.875rem; color: var(--color-text-secondary);">可打造「文化傳承與環境永續的結合」施政亮點,展現政府尊重傳統並關懷健康,獲得宗教界與文化界雙重肯定。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 成功關鍵 -->
+          <div style="margin-top: var(--spacing-3xl); padding: var(--spacing-2xl); background-color: var(--color-gray-50); border-radius: var(--radius-lg);">
+            <h3 class="section-title" style="font-size: 1.5rem;">成功關鍵因素</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-xl); margin-top: var(--spacing-xl);">
+              <!-- 上排 -->
+              <div class="scenario-card" style="border: 1px solid var(--color-gray-200); padding: var(--spacing-xl);">
+                <h5 style="font-weight: 600; color: var(--color-primary); margin-bottom: var(--spacing-md);">科學化驗證</h5>
+                <p style="font-size: 0.9375rem; color: var(--color-text-secondary); line-height: 1.6;">利用南部縣市已建立的官能實驗室,提供科學化、可量化的驗證數據,將主觀感受轉化為客觀標準。</p>
+              </div>
+              <div class="scenario-card" style="border: 1px solid var(--color-gray-200); padding: var(--spacing-xl);">
+                <h5 style="font-weight: 600; color: var(--color-primary); margin-bottom: var(--spacing-md);">中央補助機制</h5>
+                <p style="font-size: 0.9375rem; color: var(--color-text-secondary); line-height: 1.6;">透過中央補助(空污基金、觀光署、商業發展署等)降低地方財政負擔,提高推動意願。</p>
+              </div>
+              <!-- 下排 -->
+              <div class="scenario-card" style="border: 1px solid var(--color-gray-200); padding: var(--spacing-xl);">
+                <h5 style="font-weight: 600; color: var(--color-primary); margin-bottom: var(--spacing-md);">標準化 SOP</h5>
+                <p style="font-size: 0.9375rem; color: var(--color-text-secondary); line-height: 1.6;">為公務人員提供標準化 SOP,降低執行風險,確保專案的合法性與正當性。</p>
+              </div>
+              <div class="scenario-card" style="border: 1px solid var(--color-gray-200); padding: var(--spacing-xl);">
+                <h5 style="font-weight: 600; color: var(--color-primary); margin-bottom: var(--spacing-md);">政績轉化能力</h5>
+                <p style="font-size: 0.9375rem; color: var(--color-text-secondary); line-height: 1.6;">將環境改善成果轉化為可宣傳的政績與選票,形成正向激勵,驅動更多縣市跟進。</p>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+  </main>
+  
+  <!-- 頁尾 -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 WETOP 泉康科技. All Rights Reserved.</p>
+    </div>
+  </footer>
+  
+  <script>
+    // JavaScript for Tabs functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabsList = document.getElementById('scenario-tabs');
+      const tabsTriggers = tabsList.querySelectorAll('.tabs-trigger');
+      const tabsContents = document.querySelectorAll('.tabs-content');
+
+      tabsTriggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const targetTab = trigger.getAttribute('data-tab');
+
+          tabsTriggers.forEach(t => t.classList.remove('active'));
+          trigger.classList.add('active');
+
+          tabsContents.forEach(content => {
+            content.classList.remove('active');
+            if (content.id === targetTab) {
+              content.classList.add('active');
+            }
+          });
+        });
+      });
+    });
+  </script>
+  <script src="main.js"></script>
+</body>
+</html>
