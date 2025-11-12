@@ -1035,17 +1035,47 @@ main {
   
   .hero p,
   .hero-light p {
-    font-size: clamp(1rem, 4vw, 1.25rem);
+    font-size: 1rem;
+    line-height: 1.8;
   }
   
+  /* Hero 區塊行動裝置優化 */
   .hero-light {
-    padding: var(--spacing-3xl) 0;
+    padding: 2rem 1rem;
+    min-height: auto;
+  }
+  
+  /* 按鈕區塊行動裝置優化 */
+  .flex {
+    flex-direction: column;
+    max-width: 320px;
+    margin: 0 auto;
+    gap: 1rem;
+  }
+  
+  .btn {
+    width: 100%;
+    text-align: center;
+    padding: 1rem 1.5rem;
   }
   
   /* 頁面標題響應式優化 */
   .page-title {
     font-size: clamp(1.875rem, 7vw, 2.75rem) !important;
     line-height: 1.2 !important;
+  }
+  
+  /* 圖片自適應優化 */
+  img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100%;
+  }
+  
+  /* 段落優化 */
+  p, .card-text {
+    line-height: 1.8;
+    font-size: 1rem;
   }
   
   .page-subtitle {
@@ -1280,5 +1310,129 @@ main {
   .hero-light .lead {
     font-size: clamp(1rem, 4vw, 1.25rem) !important;
     margin-bottom: 1rem !important;
+  }
+}
+
+/* ==========================================
+   無障礙優化 (Accessibility)
+   ========================================== */
+
+/* 焦點樣式優化 */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* 跳過連結 (Skip Links) */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--color-primary);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 9999;
+  border-radius: 4px;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* 螢幕閱讀器專用內容 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 高對比度支援 */
+@media (prefers-contrast: high) {
+  :root {
+    --color-text-primary: #000000;
+    --color-text-secondary: #2d2d2d;
+    --color-primary: #0066cc;
+  }
+}
+
+/* 減少動畫偏好支援 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================
+   進階行動裝置優化
+   ========================================== */
+
+/* 小螢幕優化 (480px以下) */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem;
+  }
+  
+  .card {
+    margin-bottom: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .btn {
+    font-size: 0.95rem;
+    padding: 0.875rem 1.25rem;
+  }
+  
+  .section-title {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .navbar-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: left 0.3s ease;
+    z-index: 1000;
+  }
+  
+  .navbar-menu.active {
+    left: 0;
+  }
+  
+  .navbar-menu li {
+    margin: 1rem 0;
+  }
+  
+  .navbar-menu a {
+    font-size: 1.25rem;
+    padding: 1rem;
   }
 }

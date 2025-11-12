@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-TW" id="top">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -78,41 +78,44 @@
 </head>
 <body>
   
+  <!-- 無障礙跳過連結 -->
+  <a href="#main-content" class="skip-link">跳至主要內容</a>
+  
   <!-- 社交媒體固定按鈕 -->
-  <div class="social-buttons">
-    <a href="https://www.facebook.com/WetopTW" target="_blank" class="social-button facebook" title="Facebook">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+  <div class="social-buttons" role="complementary" aria-label="社群媒體連結">
+    <a href="https://www.facebook.com/WetopTW" target="_blank" class="social-button facebook" aria-label="前往 WETOP 泉康科技 Facebook 專頁（在新視窗開啟）">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
       </svg>
     </a>
-    <a href="https://page.line.me/wetop?openQrModal=true" target="_blank" class="social-button line" title="LINE">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+    <a href="https://page.line.me/wetop?openQrModal=true" target="_blank" class="social-button line" aria-label="加入 WETOP 泉康科技 LINE 官方帳號（在新視窗開啟）">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.070 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
       </svg>
     </a>
-    <a href="#top" class="social-button top-button" title="回到頂部">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+    <a href="#top" class="social-button top-button" aria-label="回到頁面頂部">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
       </svg>
     </a>
   </div>
   
   <!-- 導航列 -->
-  <nav class="navbar">
+  <nav class="navbar" role="navigation" aria-label="主導航">
     <div class="navbar-container">
-      <a href="index.html" class="navbar-brand">
+      <a href="index.html" class="navbar-brand" aria-label="回到首頁">
         <img src="wetop-logo.png" alt="WETOP Logo" class="navbar-logo">
         <span>環境品質標準政策</span>
       </a>
       
-      <button class="navbar-toggle" aria-label="選單">
+      <button class="navbar-toggle" aria-label="開啟導航選單" aria-expanded="false" aria-controls="navbar-menu">
         <span></span>
         <span></span>
         <span></span>
       </button>
       
-      <ul class="navbar-menu">
-        <li><a href="index.html">首頁</a></li>
+      <ul class="navbar-menu" id="navbar-menu">
+        <li><a href="index.html" aria-current="page">首頁</a></li>
         <li><a href="innovation-model.html">創新模式</a></li>
         <li><a href="application-scenarios.html">應用場景</a></li>
         <li><a href="scientific-evidence.html">科學實證</a></li>
@@ -122,7 +125,7 @@
   </nav>
   
   <!-- 主要內容 -->
-  <main>
+  <main id="main-content">
     
     <!-- Hero Section -->
     <section class="hero hero-light")
@@ -151,11 +154,11 @@
           </p>
           
           <div class="flex gap-md justify-center items-center">
-            <a href="innovation-model.html" class="btn btn-secondary text-lg font-medium" style="padding: 0.875rem 2.5rem; letter-spacing: 0.01em;">
+            <a href="innovation-model.html" class="btn btn-secondary text-lg font-medium" style="padding: 0.875rem 2.5rem; letter-spacing: 0.01em;" aria-label="前往創新模式頁面了解政策推動模式">
               深入了解創新模式
-              <span style="margin-left: 0.5rem;">→</span>
+              <span style="margin-left: 0.5rem;" aria-hidden="true">→</span>
             </a>
-            <a href="application-scenarios.html" class="btn btn-outline text-lg font-medium" style="padding: 0.875rem 2.5rem; border-color: var(--color-primary); color: var(--color-primary); letter-spacing: 0.01em;">
+            <a href="application-scenarios.html" class="btn btn-outline text-lg font-medium" style="padding: 0.875rem 2.5rem; border-color: var(--color-primary); color: var(--color-primary); letter-spacing: 0.01em;" aria-label="前往應用場景頁面查看實際案例">
               查看應用場景
             </a>
           </div>
@@ -184,21 +187,21 @@
         
         <div class="grid grid-cols-3" style="max-width: 1000px; margin: 0 auto;">
           <div class="card" style="border: 2px solid var(--color-gray-200); transition: border-color 0.3s;">
-            <div class="card-icon" style="color: var(--color-danger);">⚠️</div>
+            <div class="card-icon" style="color: var(--color-danger);" aria-label="警告圖示" role="img">⚠️</div>
             <h3 class="card-title">隱形的威脅</h3>
             <p class="card-text" style="font-size: 1rem;">
               空氣中看不見的病菌、化學污染物(TVOCs)與奈米級異味分子,長期危害人體健康,卻難以察覺與量化。
             </p>
           </div>
           <div class="card" style="border: 2px solid var(--color-gray-200); transition: border-color 0.3s;">
-            <div class="card-icon" style="color: #f97316;">💨</div>
+            <div class="card-icon" style="color: #f97316;" aria-label="空氣流動圖示" role="img">💨</div>
             <h3 class="card-title">無解的民怨</h3>
             <p class="card-text" style="font-size: 1rem;">
               來自餐廳油煙、公廁異味的頑固問題,是公害陳情的熱點,地方政府疲於應對卻缺乏有效解方。
             </p>
           </div>
           <div class="card" style="border: 2px solid var(--color-gray-200); transition: border-color 0.3s;">
-            <div class="card-icon" style="color: var(--color-text-secondary);">✨</div>
+            <div class="card-icon" style="color: var(--color-text-secondary);" aria-label="星光效果圖示" role="img">✨</div>
             <h3 class="card-title">傳統的侷限</h3>
             <p class="card-text" style="font-size: 1rem;">
               傳統濾網、香氛掩蓋等方式治標不治本,無法從源頭分解污染物,更缺乏科學驗證標準。
@@ -319,7 +322,7 @@
         <div class="grid grid-cols-3 gap-lg" style="max-width: 1200px; margin: 0 auto;">
           <!-- 支柱一：依法合規 -->
           <div class="card" style="border: 2px solid rgba(30, 64, 175, 0.2); transition: border-color 0.3s;">
-            <div class="card-icon" style="color: var(--color-primary);">🛡️</div>
+            <div class="card-icon" style="color: var(--color-primary);" aria-label="盾牌保護圖示" role="img">🛡️</div>
             <h3 class="card-title">依法合規</h3>
             <p class="card-text">
               將《室內空氣品質管理法》與《空氣污染防制法》的強制要求,轉化為具體行動的堅實基礎。公務人員推動此方案,是嚴格遵守中央法令,規避潛在法律風險。
@@ -327,7 +330,7 @@
           </div>
           <!-- 支柱二：科學驗證 -->
           <div class="card" style="border: 2px solid rgba(5, 150, 105, 0.2); transition: border-color 0.3s;">
-            <div class="card-icon" style="color: var(--color-secondary);">✅</div>
+            <div class="card-icon" style="color: var(--color-secondary);" aria-label="勾選確認圖示" role="img">✅</div>
             <h3 class="card-title">科學驗證</h3>
             <p class="card-text">
               所有成效皆可透過「官能測定」、「落菌實驗」等國家標準方法進行量化與驗收。將主觀的「感覺問題」轉化為客觀的「工程標準」。
@@ -335,7 +338,7 @@
           </div>
           <!-- 支柱三：多方共贏 -->
           <div class="card" style="border: 2px solid rgba(59, 130, 246, 0.2); transition: border-color 0.3s;">
-            <div class="card-icon" style="color: #3b82f6;">👥</div>
+            <div class="card-icon" style="color: #3b82f6;" aria-label="多人合作圖示" role="img">👥</div>
             <h3 class="card-title">多方共贏</h3>
             <p class="card-text">
               為中央、地方、場所管理人、民眾、專業技師等多方創造價值。解決環境痛點的同時,創造政績、提升滿意度、開拓新市場。

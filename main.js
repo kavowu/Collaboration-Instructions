@@ -27,11 +27,16 @@ function initNavbar() {
   // 手機選單切換
   if (navbarToggle && navbarMenu) {
     navbarToggle.addEventListener('click', function() {
+      const isActive = navbarMenu.classList.contains('active');
       navbarMenu.classList.toggle('active');
+      
+      // 更新 aria-expanded 屬性
+      navbarToggle.setAttribute('aria-expanded', !isActive);
+      navbarToggle.setAttribute('aria-label', !isActive ? '關閉導航選單' : '開啟導航選單');
       
       // 切換按鈕動畫
       const spans = navbarToggle.querySelectorAll('span');
-      if (navbarMenu.classList.contains('active')) {
+      if (!isActive) {
         spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
         spans[1].style.opacity = '0';
         spans[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
