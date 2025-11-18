@@ -23,11 +23,37 @@
   <title>應用場景 - 三大場景具體規劃 | 環境品質標準政策</title>
   <link rel="stylesheet" href="styles.css">
   <style>
+    /* 吸引注意的動畫 */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+    }
+    
+    @keyframes glow {
+      0% { box-shadow: 0 2px 8px rgba(30, 64, 175, 0.1); }
+      50% { box-shadow: 0 4px 16px rgba(30, 64, 175, 0.25); }
+      100% { box-shadow: 0 2px 8px rgba(30, 64, 175, 0.1); }
+    }
+    
     .tabs-list {
       display: flex;
       justify-content: center;
       margin-bottom: var(--spacing-2xl);
       border-bottom: 2px solid var(--color-gray-200);
+      position: relative;
+    }
+    
+    .tabs-list::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+      animation: glow 2s ease-in-out infinite;
     }
     
     .tabs-trigger {
@@ -37,19 +63,60 @@
       font-weight: 600;
       color: var(--color-text-secondary);
       border-bottom: 3px solid transparent;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      background: var(--color-gray-100);
       transition: all var(--transition-fast);
       display: flex;
       align-items: center;
       gap: var(--spacing-sm);
+      position: relative;
+      user-select: none;
+      /* 明顯的可點擊提示 */
+      border: 2px solid var(--color-gray-300);
+      margin: 0 2px;
+      /* 初始載入時的脈衝動畫 */
+      animation: pulse 2s ease-in-out 3;
+    }
+    
+    .tabs-trigger:nth-child(1) {
+      animation-delay: 0s;
+    }
+    
+    .tabs-trigger:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+    
+    .tabs-trigger:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+    
+    .tabs-trigger::before {
+      content: "👆";
+      font-size: 0.875rem;
+      margin-right: var(--spacing-xs);
+      opacity: 0.7;
     }
     
     .tabs-trigger:hover {
       color: var(--color-primary);
+      background: white;
+      border-color: var(--color-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(30, 64, 175, 0.15);
     }
     
     .tabs-trigger.active {
       color: var(--color-primary);
       border-bottom-color: var(--color-primary);
+      background: white;
+      border-color: var(--color-primary);
+      border-bottom: 3px solid var(--color-primary);
+      box-shadow: 0 2px 8px rgba(30, 64, 175, 0.1);
+    }
+    
+    .tabs-trigger.active::before {
+      content: "✅";
+      opacity: 1;
     }
     
     .tabs-content {
@@ -250,10 +317,17 @@
     <section class="section">
       <div class="container">
         <div class="tabs-container" style="max-width: 1200px; margin: 0 auto;">
+          <!-- 點擊提示 -->
+          <div style="text-align: center; margin-bottom: var(--spacing-lg);">
+            <p style="font-size: 0.875rem; color: var(--color-text-secondary); font-weight: 500;">
+              💡 點選下方場景標籤查看詳細內容
+            </p>
+          </div>
+          
           <div class="tabs-list" id="scenario-tabs">
-            <div class="tabs-trigger active" data-tab="toilet">公廁環境改善</div>
-            <div class="tabs-trigger" data-tab="restaurant">餐飲業環境改善</div>
-            <div class="tabs-trigger" data-tab="religion">宗教場所環境改善</div>
+            <div class="tabs-trigger active" data-tab="toilet" title="點擊查看公廁環境改善詳情">公廁環境改善</div>
+            <div class="tabs-trigger" data-tab="restaurant" title="點擊查看餐飲業環境改善詳情">餐飲業環境改善</div>
+            <div class="tabs-trigger" data-tab="religion" title="點擊查看宗教場所環境改善詳情">宗教場所環境改善</div>
           </div>
           
           <!-- 場景一：公廁環境改善 -->
