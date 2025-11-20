@@ -906,21 +906,59 @@ main {
     font-size: 1.75rem;
   }
   
+  /* 手機版導航列優化 */
+  .navbar-container {
+    height: 50px; /* 進一步減少導航列高度 */
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .navbar-brand {
+    font-size: 0.875rem; /* 更小的品牌文字 */
+    gap: var(--spacing-xs);
+    flex-shrink: 0;
+  }
+  
+  .navbar-logo {
+    width: 24px; /* 更小的LOGO */
+    height: 24px;
+  }
+  
+  .navbar-brand span {
+    display: none; /* 在手機版完全隱藏品牌文字 */
+  }
+  
+  /* 讓LOGO區域更緊湊 */
+  .navbar-brand {
+    min-width: auto;
+    width: auto;
+  }
+  
   .navbar-menu {
     display: none;
     position: absolute;
-    top: 80px;
+    top: 50px; /* 配合新的導航列高度 */
     left: 0;
     right: 0;
     background-color: var(--color-bg-primary);
     flex-direction: column;
-    padding: var(--spacing-lg);
+    padding: var(--spacing-md);
     box-shadow: var(--shadow-lg);
     gap: 0;
+    border-top: 1px solid var(--color-gray-200);
   }
   
   .navbar-menu.active {
     display: flex;
+  }
+  
+  /* 調整主要內容區域的頂部間距 */
+  main {
+    margin-top: 50px; /* 配合新的導航列高度 */
+    min-height: calc(100vh - 50px);
+  }
+  
+  .page-header {
+    margin-top: 50px; /* 配合新的導航列高度 */
   }
   
   .navbar-menu a {
@@ -930,6 +968,14 @@ main {
   
   .navbar-toggle {
     display: flex;
+    width: 32px;
+    height: 32px;
+    padding: var(--spacing-xs);
+  }
+  
+  .navbar-toggle span {
+    width: 18px;
+    height: 2px;
   }
   
   .grid-cols-2,
@@ -1253,13 +1299,20 @@ main {
 /* 社交媒體按鈕響應式設計 */
 @media (max-width: 768px) {
   .social-buttons {
-    right: 10px;
-    gap: 10px;
+    right: 8px;
+    bottom: 15px;
+    gap: 8px;
   }
   
   .social-button {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
+    font-size: 0.875rem;
+  }
+  
+  .social-button svg {
+    width: 18px;
+    height: 18px;
   }
 }
 
