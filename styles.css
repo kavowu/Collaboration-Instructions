@@ -906,30 +906,21 @@ main {
     font-size: 1.75rem;
   }
   
-  /* 手機版導航列優化 */
+  /* 手機版導航列優化：完全隱藏圖片 LOGO，只留品牌文字與漢堡按鈕 */
   .navbar-container {
-    height: 50px; /* 進一步減少導航列高度 */
+    height: 50px;
     padding: 0 var(--spacing-sm);
   }
   
-  .navbar-brand {
-    font-size: 0.875rem; /* 更小的品牌文字 */
-    gap: var(--spacing-xs);
-    flex-shrink: 0;
-  }
-  
+  /* 手機版不顯示圖片 LOGO，避免擋住畫面 */
   .navbar-logo {
-    width: 24px; /* 更小的LOGO */
-    height: 24px;
+    display: none;
   }
   
-  .navbar-brand span {
-    display: none; /* 在手機版完全隱藏品牌文字 */
-  }
-  
-  /* 讓LOGO區域更緊湊 */
   .navbar-brand {
-    min-width: auto;
+    font-size: 1rem;
+    gap: var(--spacing-xs);
+    flex-shrink: 1;
     width: auto;
   }
   
