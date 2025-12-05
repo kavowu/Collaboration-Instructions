@@ -899,11 +899,11 @@ main {
   }
   
   h1 {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
   
   h2 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
   }
   
   /* 手機版導航列優化：完全隱藏圖片 LOGO，只留品牌文字與漢堡按鈕 */
@@ -975,12 +975,84 @@ main {
     grid-template-columns: 1fr;
   }
   
+  /* 首頁 Hero 與區塊間距微調，讓首屏資訊更集中 */
   .hero {
-    padding: var(--spacing-3xl) 0;
+    padding: var(--spacing-2xl) 0 var(--spacing-3xl);
+  }
+  
+  .hero .lead,
+  .hero p {
+    font-size: 1rem;
+    line-height: 1.7;
   }
   
   .section {
-    padding: var(--spacing-3xl) 0;
+    padding: var(--spacing-2xl) 0 var(--spacing-3xl);
+  }
+  
+  /* 首頁 Hero 主要按鈕：手機改為直向滿版，提高可點性 */
+  .hero .flex {
+    flex-direction: column;
+    gap: var(--spacing-md);
+    align-items: stretch;
+  }
+  
+  .hero .flex .btn {
+    width: 100%;
+    justify-content: center;
+    min-height: 44px;
+  }
+  
+  /* 三張挑戰卡片：在手機上縮短圖片高度、移除 hover 動畫 */
+  .section .card {
+    box-shadow: var(--shadow-md);
+  }
+  
+  .section .card > div:first-child {
+    height: 220px;
+  }
+  
+  .section .card {
+    transition: none;
+  }
+  
+  .section .card[onmouseover] {
+    /* 讓行內 onmouseover 不造成跳動 */
+    transform: none !important;
+  }
+  
+  /* 區塊標題與內文在手機上的字級優化 */
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+  
+  /* 手機上主要段落的左右留白再多一些，閱讀更舒適 */
+  .section .container,
+  .hero .container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  
+  /* 社交按鈕在手機上略縮小並靠下顯示，不搶視線 */
+  .social-buttons {
+    right: 8px;
+    bottom: 16px;
+    gap: 8px;
+  }
+  
+  .social-button {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .social-button svg {
+    width: 18px;
+    height: 18px;
   }
 }
 
